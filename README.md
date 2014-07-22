@@ -19,16 +19,16 @@ Put your people images in the public folder and name them the same as the names 
 Endpoints
 ------------
 
-`GET /status`
+## `GET /status`
 
-`GET /status/table`
+## `GET /status/table`
 
-`GET /status/list`
+## `GET /status/list`
 
 ##### Params
 * name (optional)
 
-`POST /status/update`
+## `POST /status/update`
 
 ##### Params
 * name (required)
@@ -36,25 +36,25 @@ Endpoints
 * push_id (optional)
 * beacon_minor (optional)
 
-`POST /message/in`
+## `POST /message/in`
 
 ##### Params
 * name (required)
 * message (required)
 
-`POST /watch/:target`
+## `POST /watch/:target`
 
 ##### Params
 * target (required)
 * name (required)
 
-`POST /unwatch/:target`
+## `POST /unwatch/:target`
 
 ##### Params
 * target (required)
 * name (required)
 
-`GET /image/:name`
+## `GET /image/:name`
 
 ##### Params
 * name (required)
