@@ -19,11 +19,11 @@ Put your people images in the public folder and name them the same as the names 
 Endpoints
 ------------
 
-## `GET /status`
+#### `GET /status`
 
-## `GET /status/table`
+#### `GET /status/table`
 
-## `GET /status/list`
+#### `GET /status/list`
 
 ##### Params
 * name (optional)
