@@ -16,6 +16,48 @@ The server is designed to run with a [Postgres](https://devcenter.heroku.com/art
 #### Images
 Put your people images in the public folder and name them the same as the names used in the app.
 
+Endpoints
+------------
+
+`GET /status`
+
+`GET /status/table`
+
+`GET /status/list`
+
+##### Params
+* name (optional)
+
+`POST /status/update`
+
+##### Params
+* name (required)
+* status (required)
+* push_id (optional)
+* beacon_minor (optional)
+
+`POST /message/in`
+
+##### Params
+* name (required)
+* message (required)
+
+`POST /watch/:target`
+
+##### Params
+* target (required)
+* name (required)
+
+`POST /unwatch/:target`
+
+##### Params
+* target (required)
+* name (required)
+
+`GET /image/:name`
+
+##### Params
+* name (required)
 
 Contributing
 ------------
