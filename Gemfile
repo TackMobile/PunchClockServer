@@ -1,4 +1,4 @@
-ruby '2.0.0'
+ruby '2.1.2'
 source 'https://rubygems.org'
 
 gem 'sinatra', require: 'sinatra'
@@ -13,3 +13,8 @@ gem 'unicorn'
 gem 'pg'
 
 gem 'zero_push'
+
+gem 'hipchat'
+gem 'pry'
+gem 'rspec'
+gem 'dotenv'
