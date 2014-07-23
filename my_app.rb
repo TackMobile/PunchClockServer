@@ -225,7 +225,7 @@ end
 get '/image/:name' do
   require_params :name
 
-  image_name = "#{params[:name]}.png"
+  image_name = "#{params[:name]}@2x.png"
   image_path = File.expand_path(image_name, settings.public_folder)
 
   if File.exists?(image_path)
