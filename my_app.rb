@@ -144,8 +144,11 @@ post '/status/update' do
     person.version = agent_version
     person.date = DateTime.now
     person.save or {"result" => STATUS_ERROR, "reason" => "The record could not be saved"}.to_json
-    
-    
+
+    # Hipchat message
+    client = HipChat::Client.new(ENV['HIPCHAT_TOKEN'])
+    client['PunchClock'].send('PunchClock', "#{params[:name]} has arrived at Tack.", color: 'purple')
+
     puts "STATUS UPDATE: #{person.name.capitalize!} is #{params[:status]}"
   end
 
@@ -184,6 +187,10 @@ post '/message/in' do
       info: ""
     })
   end
+
+  # Hipchat message
+  client = HipChat::Client.new(ENV['HIPCHAT_TOKEN'])
+  client['PunchClock'].send('PunchClock', "#{params[:name]} said, '#{params[:message]}'", color: 'purple')
   
   {"result" => STATUS_OK}.to_json
   
