@@ -4,7 +4,6 @@ require 'json'
 require 'pp' if ENV['RACK_ENV'] == 'development'
 
 require './config/init.rb'
-require './integrations/hipchat.rb'
 
 STATUS_OK = 0
 STATUS_ERROR = 1
