@@ -4,6 +4,7 @@ require 'json'
 require 'pp' if ENV['RACK_ENV'] == 'development'
 
 require './config/init.rb'
+require './integrations/hipchat.rb'
 
 STATUS_OK = 0
 STATUS_ERROR = 1
@@ -139,6 +140,9 @@ post '/status/update' do
     person.date = DateTime.now
     person.save or {"result" => STATUS_ERROR, "reason" => "The record could not be saved"}.to_json
 
+    # Hipchat message
+    client = HipChat::Client.new(ENV['HIPCHAT_TOKEN'])
+    client['PunchClock'].send('PunchClock', "#{params[:name]} has arrived at Tack.", color: 'purple')
 
     puts "STATUS UPDATE: #{person.name.capitalize!} is #{params[:status]}"
   end
@@ -180,6 +184,10 @@ post '/message/in' do
       info: ""
     })
   end
+
+  # Hipchat message
+  client = HipChat::Client.new(ENV['HIPCHAT_TOKEN'])
+  client['PunchClock'].send('PunchClock', "#{params[:name]} said, '#{params[:message]}'", color: 'purple')
 
   {"result" => STATUS_OK}.to_json
 end
