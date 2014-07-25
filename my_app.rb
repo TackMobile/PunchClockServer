@@ -131,7 +131,11 @@ post '/status/update' do
 
         # Hipchat message
         client = HipChat::Client.new(ENV['HIPCHAT_TOKEN'])
-        client['PunchClock'].send('PunchClock', "#{params[:name]} has arrived at Tack.", color: 'purple')
+        if params[:status] === 'In'
+          client['PunchClock'].send('PunchClock', "#{params[:name]} has arrived at Tack.", color: 'purple')
+        elsif params[:status] === 'Out'
+          client['PunchClock'].send('PunchClock', "#{params[:name]} has left Tack.", color: 'purple')
+        end
         
       end
     end
