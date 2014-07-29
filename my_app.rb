@@ -132,9 +132,9 @@ post '/status/update' do
         # Hipchat message
         client = HipChat::Client.new(ENV['HIPCHAT_TOKEN'])
         if params[:status] === 'In'
-          client['PunchClock'].send('PunchClock', "#{params[:name]} arrived at Tack.", color: 'purple')
+          client['Lounge'].send('PunchClock', "#{params[:name]} arrived at Tack.", color: 'purple')
         elsif params[:status] === 'Out'
-          client['PunchClock'].send('PunchClock', "#{params[:name]} left Tack.", color: 'purple')
+          client['Lounge'].send('PunchClock', "#{params[:name]} left Tack.", color: 'purple')
         end
         
       end
@@ -191,7 +191,7 @@ post '/message/in' do
 
   # Hipchat message
   client = HipChat::Client.new(ENV['HIPCHAT_TOKEN'])
-  client['PunchClock'].send('PunchClock', "#{params[:name]} said, '#{params[:message]}'", color: 'purple')
+  client['Lounge'].send('PunchClock', "#{params[:name]} said, '#{params[:message]}'", color: 'purple')
 
   {"result" => STATUS_OK}.to_json
 end
